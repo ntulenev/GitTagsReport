@@ -1,13 +1,20 @@
 ﻿using System.Collections.Frozen;
-using System.Collections.Immutable;
 using Abstractions;
 using LibGit2Sharp;
 using Models;
 
 namespace Logic;
 
+/// <summary>
+/// Implements <see cref="IGitTagsLoader"/> to load Git tag metadata from a repository.
+/// </summary>
+/// <remarks>
+/// This class uses LibGit2Sharp to access and read tags from a Git repository, 
+/// transforming them into a collection of <see cref="GitTagMetadata"/>.
+/// </remarks>
 public class GitTagsLoader : IGitTagsLoader
 {
+    /// <inheritdoc/>
     public IEnumerable<GitTagMetadata> LoadTags(GitPath path)
     {
         ArgumentNullException.ThrowIfNull(path);
