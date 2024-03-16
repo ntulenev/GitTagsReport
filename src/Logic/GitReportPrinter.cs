@@ -5,8 +5,12 @@ using Models;
 
 namespace Logic;
 
+/// <summary>
+/// Prints Git tag reports to the console.
+/// </summary>
 public sealed class GitReportPrinter : IGitReportPrinter
 {
+    /// <inheritdoc/>
     public void Print(IEnumerable<GitTagMetadata> items, TicketKey ticketKey)
     {
         var pattern = new Regex(@$"{ticketKey.Value}-\d+");
