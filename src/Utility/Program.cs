@@ -3,7 +3,7 @@ using Utility.Console;
 using Utility.DI;
 
 var serviceCollection = new ServiceCollection();
-serviceCollection.RegisterReports();
+serviceCollection.RegisterLogic();
 serviceCollection.RegisterApp();
 var provider = serviceCollection.BuildServiceProvider();
 using var serviceScope = provider.CreateScope();
