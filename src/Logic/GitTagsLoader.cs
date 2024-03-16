@@ -12,7 +12,7 @@ public class GitTagsLoader : IGitTagsLoader
     {
         ArgumentNullException.ThrowIfNull(path);
 
-        using var repo = new Repository(path.Path);
+        using var repo = new Repository(path.Value);
         var tags = repo.Tags.ToFrozenDictionary(x => x.Target.Sha);
         foreach (var commit in repo.Commits)
         {
