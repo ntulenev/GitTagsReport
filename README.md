@@ -3,6 +3,14 @@ The application provides information on commits with tags for building insights 
 
 The application assumes that the commit description includes a task number from a ticketing system, such as JIRA, and searches by the task number key to display them instead of the full commit text.
 
+### Operating principle
+```mermaid
+graph TD;
+    A[Loading All Tags from git Repository] --> B[Combine Tags with Commit Messages from Related Commits];
+    B --> C[Getting Task Ids from the Messages by parsing messages on Task Tracker Key];
+    C --> D[Display Tags and Task IDs in a Table View];
+```
+
 ## Usage
 
 To use this tool, you must specify both the path to the git directory and the ticket system task key. Below are the required arguments:
