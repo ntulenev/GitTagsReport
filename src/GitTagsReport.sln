@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utility", "Utility\Utility.csproj", "{5C1F4A40-C755-426D-8CEA-31DB2527DD57}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abstractions", "Abstractions\Abstractions.csproj", "{73094D6F-990A-491F-8A83-B941FDD06484}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{CA4ED88D-268F-47AC-A8FF-8A6AB9697D09}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logic", "Logic\Logic.csproj", "{FEEDC8B5-5053-4674-A1E5-3CEE00110E93}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5C1F4A40-C755-426D-8CEA-31DB2527DD57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C1F4A40-C755-426D-8CEA-31DB2527DD57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C1F4A40-C755-426D-8CEA-31DB2527DD57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C1F4A40-C755-426D-8CEA-31DB2527DD57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73094D6F-990A-491F-8A83-B941FDD06484}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73094D6F-990A-491F-8A83-B941FDD06484}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73094D6F-990A-491F-8A83-B941FDD06484}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73094D6F-990A-491F-8A83-B941FDD06484}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA4ED88D-268F-47AC-A8FF-8A6AB9697D09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA4ED88D-268F-47AC-A8FF-8A6AB9697D09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA4ED88D-268F-47AC-A8FF-8A6AB9697D09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA4ED88D-268F-47AC-A8FF-8A6AB9697D09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FEEDC8B5-5053-4674-A1E5-3CEE00110E93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEEDC8B5-5053-4674-A1E5-3CEE00110E93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEEDC8B5-5053-4674-A1E5-3CEE00110E93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEEDC8B5-5053-4674-A1E5-3CEE00110E93}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
