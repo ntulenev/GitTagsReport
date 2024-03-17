@@ -50,3 +50,29 @@ utility.exe --path C:\Users\<user>\Documents\Code\Service --key AAA
 
  Count: 9
 ```
+
+If the commit message includes multiple tasks for any reason, they will be displayed.
+```
+ ------------------------------- 
+ | Tag     | Description       |
+ -------------------------------
+ | 1.11.1  | AAA-1217          |
+ -------------------------------
+ | 1.11.0  | AAA-1206,AAA-1284 |
+ -------------------------------
+ | 1.8.1   | AAA-1277          |
+ -------------------------------
+```
+
+If the system cannot extract the key from the message, then the full text of the message will be provided
+```
+ ----------------------------------------------- 
+ | Tag     | Description                       |
+ -----------------------------------------------
+ | 1.11.1  | AAA-1217                          |
+ -----------------------------------------------
+ | 1.11.0  | Merged XXX-7777 (pull request #4) |
+ -----------------------------------------------
+ | 1.8.1   | AAA-1277                          |
+ -----------------------------------------------
+```
