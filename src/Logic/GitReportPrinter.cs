@@ -13,16 +13,14 @@ public sealed class GitReportPrinter : IGitReportPrinter
     /// <inheritdoc/>
     public void Print(IEnumerable<GitTagMetadata> items, TicketKey ticketKey)
     {
-        var pattern = new Regex(@$"{ticketKey.Value}-\d+");
-
         var table = new ConsoleTable("Tag", "Description");
         foreach (var tag in items)
         {
-            var taskId = SearchKey(tag.Description);
-            table.AddRow(tag.Tag, taskId);
+            var description = tag.TryGetTaskIds(ticketKey, out var ids)
+                ? string.Join(',', ids)
+                : tag.Description;
+            table.AddRow(tag.Tag, description);
         }
         table.Write();
-
-        string SearchKey(string description) => pattern.Match(description).Value;
     }
 }
