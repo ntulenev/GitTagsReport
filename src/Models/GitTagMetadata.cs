@@ -43,12 +43,12 @@ public sealed class GitTagMetadata
     /// Attempts to extract task IDs from a ticket key based on a predefined pattern.
     /// </summary>
     /// <param name="ticketKey">The ticket key from which to extract task IDs.</param>
-    /// <param name="Ids">When this method returns, contains an enumerable of extracted task IDs, 
+    /// <param name="ids">When this method returns, contains an enumerable of extracted task IDs, 
     /// if any are found; otherwise, the default value for the type if no matches are found.</param>
     /// <returns><c>true</c> if the pattern matches and task IDs are successfully extracted; otherwise,
     /// <c>false</c>.</returns>
     /// <exception cref="ArgumentNullException">Thrown if <paramref name="ticketKey"/> is null.</exception>
-    public bool TryGetTaskIds(TicketKey ticketKey, [MaybeNullWhen(false)] out IEnumerable<string> Ids)
+    public bool TryGetTaskIds(TicketKey ticketKey, [MaybeNullWhen(false)] out IEnumerable<string> ids)
     {
         ArgumentNullException.ThrowIfNull(ticketKey);
 
@@ -56,11 +56,11 @@ public sealed class GitTagMetadata
         var matches = pattern.Matches(Description);
         if (matches.Any())
         {
-            Ids = matches.Select(x => x.Value).Distinct();
+            ids = matches.Select(x => x.Value).Distinct();
             return true;
         }
 
-        Ids = default;
+        ids = default;
 
         return false;
     }
