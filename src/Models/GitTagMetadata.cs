@@ -1,4 +1,7 @@
-﻿namespace Models;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Text.RegularExpressions;
+
+namespace Models;
 
 /// <summary>
 /// Represents metadata for a Git tag, including the tag itself and an optional description.
@@ -36,5 +39,46 @@ public sealed class GitTagMetadata
         Description = description ?? NoDescription;
     }
 
+    /// <summary>
+    /// Attempts to extract task IDs from a ticket key based on a predefined pattern.
+    /// </summary>
+    /// <param name="ticketKey">The ticket key from which to extract task IDs.</param>
+    /// <param name="Ids">When this method returns, contains an enumerable of extracted task IDs, 
+    /// if any are found; otherwise, the default value for the type if no matches are found.</param>
+    /// <returns><c>true</c> if the pattern matches and task IDs are successfully extracted; otherwise,
+    /// <c>false</c>.</returns>
+    /// <exception cref="ArgumentNullException">Thrown if <paramref name="ticketKey"/> is null.</exception>
+    public bool TryGetTaskIds(TicketKey ticketKey, [MaybeNullWhen(false)] out IEnumerable<string> Ids)
+    {
+        ArgumentNullException.ThrowIfNull(ticketKey);
+
+        var pattern = new Regex(@$"{ticketKey.Value}-\d+");
+        var matches = pattern.Matches(Description);
+        if (matches.Any())
+        {
+            Ids = matches.Select(x => x.Value).Distinct();
+            return true;
+        }
+
+        Ids = default;
+
+        return false;
+    }
+
     private const string NoDescription = "<No description>";
 }
+
+
+/*
+
+
+        var table = new ConsoleTable("Tag", "Description");
+        foreach (var tag in items)
+        {
+            var taskId = SearchKey(tag.Description);
+            table.AddRow(tag.Tag, taskId);
+        }
+        table.Write();
+
+        string SearchKey(string description) => pattern.Match(description).Value;
+ */
