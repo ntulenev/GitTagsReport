@@ -67,18 +67,3 @@ public sealed class GitTagMetadata
 
     private const string NoDescription = "<No description>";
 }
-
-
-/*
-
-
-        var table = new ConsoleTable("Tag", "Description");
-        foreach (var tag in items)
-        {
-            var taskId = SearchKey(tag.Description);
-            table.AddRow(tag.Tag, taskId);
-        }
-        table.Write();
-
-        string SearchKey(string description) => pattern.Match(description).Value;
- */
