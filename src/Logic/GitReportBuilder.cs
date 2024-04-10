@@ -28,6 +28,9 @@ public sealed class GitReportBuilder : IGitReportBuilder
     /// <inheritdoc/>
     public void Build(GitPath path, TicketKey taskFilter)
     {
+        ArgumentNullException.ThrowIfNull(path);
+        ArgumentNullException.ThrowIfNull(taskFilter);
+        
         var tags = _loader.LoadTags(path);
         _printer.Print(tags,taskFilter);
     }
