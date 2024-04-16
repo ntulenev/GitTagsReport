@@ -1,6 +1,9 @@
-﻿using Abstractions;
+﻿using System.Diagnostics;
+using Abstractions;
+using LibGit2Sharp;
 using Logic;
 using Microsoft.Extensions.DependencyInjection;
+using Models;
 using Utility.Console;
 
 namespace Utility.DI;
@@ -28,5 +31,10 @@ public static class RegistrationHelpers
         services.AddSingleton<IGitReportBuilder, GitReportBuilder>();
         services.AddSingleton<IGitTagsLoader, GitTagsLoader>();
         services.AddSingleton<IGitReportPrinter, GitReportPrinter>();
+        services.AddSingleton<Func<GitPath, IRepository>>(p =>
+        {
+            Debug.Assert(p is not null);
+            return new Repository(p.Value);
+        });
     }
 }

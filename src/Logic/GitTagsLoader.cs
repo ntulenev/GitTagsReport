@@ -14,12 +14,27 @@ namespace Logic;
 /// </remarks>
 public class GitTagsLoader : IGitTagsLoader
 {
+    /// <summary>
+    /// Initializes a new instance of the <see cref="GitTagsLoader"/> class.
+    /// </summary>
+    /// <param name="repoFactory">A function that creates a Git repository given a <see cref="GitPath"/>.</param>
+    /// <remarks>
+    /// This constructor initializes a new instance of the <see cref="GitTagsLoader"/> class with the
+    /// provided repository factory function.
+    /// </remarks>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="repoFactory"/> is null.</exception>
+    public GitTagsLoader(Func<GitPath, IRepository> repoFactory)
+    {
+        ArgumentNullException.ThrowIfNull(repoFactory);
+        _repoFactory = repoFactory;
+    }
+
     /// <inheritdoc/>
     public IEnumerable<GitTagMetadata> LoadTags(GitPath path)
     {
         ArgumentNullException.ThrowIfNull(path);
 
-        using var repo = new Repository(path.Value);
+        using var repo = _repoFactory(path);
         var tags = repo.Tags.ToFrozenDictionary(x => x.Target.Sha);
         foreach (var commit in repo.Commits)
         {
@@ -29,4 +44,6 @@ public class GitTagsLoader : IGitTagsLoader
             }
         }
     }
+
+    private readonly Func<GitPath, IRepository> _repoFactory;
 }
