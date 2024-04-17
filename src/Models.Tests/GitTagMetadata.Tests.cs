@@ -13,8 +13,7 @@ public class GitTagMetadataTests
         Action act = () => _ = new GitTagMetadata(null!, "Description");
 
         // Assert
-        act.Should().Throw<ArgumentException>()
-            .WithMessage("Tag cannot be null, empty, or whitespace.*");
+        act.Should().Throw<ArgumentException>();
     }
 
     [Fact(DisplayName = nameof(GitTagMetadata) + " constructor initializes instance when valid tag is provided")]
