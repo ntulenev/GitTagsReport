@@ -1,5 +1,6 @@
 ﻿using FluentAssertions;
 using LibGit2Sharp;
+using Models;
 using Moq;
 
 namespace Logic.Tests;
@@ -29,5 +30,36 @@ public class GitTagsLoaderTests
 
         // Assert
         ex.Should().NotBeNull().And.BeOfType<ArgumentNullException>();
+    }
+
+    [Fact(DisplayName = "LoadTags can load data")]
+    [Trait("Category", "Unit")]
+    public void LoadTagsLoadsData()
+    {
+        // Arrange
+        var path = new GitPath(Directory.GetCurrentDirectory());
+        var tagCollection = new TestTagCollection();
+        var repo = new Mock<IRepository>(MockBehavior.Strict);
+        var dispCount = 0;
+        repo.Setup(x => x.Dispose()).Callback(() => dispCount++);
+        repo.Setup(x => x.Tags).Returns(tagCollection);
+        var commitsLog = new TestCommitLog();
+        repo.Setup(x => x.Commits).Returns(commitsLog);
+        var loader = new GitTagsLoader(p =>
+        {
+            if (p == path)
+            {
+                return repo.Object;
+            }
+
+            return null!;
+        });
+
+        // Act
+        var items = loader.LoadTags(path).ToList();
+
+        // Assert
+        items.Should().HaveCount(1);
+        dispCount.Should().Be(1);
     }
 }
