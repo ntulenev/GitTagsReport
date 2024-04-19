@@ -1,5 +1,6 @@
 ﻿using FluentAssertions;
 using LibGit2Sharp;
+using Logic.Tests.TestTypes;
 using Models;
 using Moq;
 
@@ -61,5 +62,7 @@ public class GitTagsLoaderTests
         // Assert
         items.Should().HaveCount(1);
         dispCount.Should().Be(1);
+        items[0].Tag.Should().Be("Name123");
+        items[0].Description.Should().Be("Message123");
     }
 }
