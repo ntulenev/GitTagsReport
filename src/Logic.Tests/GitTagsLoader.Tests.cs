@@ -39,11 +39,17 @@ public class GitTagsLoaderTests
     {
         // Arrange
         var path = new GitPath(Directory.GetCurrentDirectory());
-        var tagCollection = new TestTagCollection();
+        var tagCollection = new Mock<TagCollection>(MockBehavior.Strict);
+        var tags = new List<Tag>()
+        {
+            new TestTag()
+        };
+        tagCollection.Setup(x => x.GetEnumerator())
+            .Returns(() => ((IEnumerable<Tag>) tags).GetEnumerator());
         var repo = new Mock<IRepository>(MockBehavior.Strict);
         var dispCount = 0;
         repo.Setup(x => x.Dispose()).Callback(() => dispCount++);
-        repo.Setup(x => x.Tags).Returns(tagCollection);
+        repo.Setup(x => x.Tags).Returns(tagCollection.Object);
         var commitsLog = new TestCommitLog();
         repo.Setup(x => x.Commits).Returns(commitsLog);
         var loader = new GitTagsLoader(p =>
