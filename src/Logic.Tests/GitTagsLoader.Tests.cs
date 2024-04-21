@@ -35,20 +35,24 @@ public class GitTagsLoaderTests
 
     [Fact(DisplayName = "LoadTags can load data")]
     [Trait("Category", "Unit")]
-    public void LoadTagsLoadsData()
+    public void LoadTagsCanLoadsData()
     {
         // Arrange
         var path = new GitPath(Directory.GetCurrentDirectory());
         var tagCollection = new Mock<TagCollection>(MockBehavior.Strict);
+        var friendlyName = "Name123";
+        var testTag = new Mock<Tag>(MockBehavior.Strict);
+        testTag.Setup(x => x.Target).Returns(new TestGitObject());
+        testTag.Setup(x => x.FriendlyName).Returns(friendlyName);
         var tags = new List<Tag>()
         {
-            new TestTag()
+            testTag.Object
         };
         tagCollection.Setup(x => x.GetEnumerator())
             .Returns(() => ((IEnumerable<Tag>) tags).GetEnumerator());
         var repo = new Mock<IRepository>(MockBehavior.Strict);
-        var dispCount = 0;
-        repo.Setup(x => x.Dispose()).Callback(() => dispCount++);
+        var disposeCount = 0;
+        repo.Setup(x => x.Dispose()).Callback(() => disposeCount++);
         repo.Setup(x => x.Tags).Returns(tagCollection.Object);
         var commitsLog = new TestCommitLog();
         repo.Setup(x => x.Commits).Returns(commitsLog);
@@ -67,8 +71,8 @@ public class GitTagsLoaderTests
 
         // Assert
         items.Should().HaveCount(1);
-        dispCount.Should().Be(1);
-        items[0].Tag.Should().Be("Name123");
+        disposeCount.Should().Be(1);
+        items[0].Tag.Should().Be(friendlyName);
         items[0].Description.Should().Be("Message123");
     }
 }
