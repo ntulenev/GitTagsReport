@@ -41,8 +41,11 @@ public class GitTagsLoaderTests
         var path = new GitPath(Directory.GetCurrentDirectory());
         var tagCollection = new Mock<TagCollection>(MockBehavior.Strict);
         var friendlyName = "Name123";
+        var gitSha = "Test";
         var testTag = new Mock<Tag>(MockBehavior.Strict);
-        testTag.Setup(x => x.Target).Returns(new TestGitObject());
+        var testGitObject = new Mock<GitObject>(MockBehavior.Strict);
+        testGitObject.Setup(x => x.Sha).Returns(gitSha);
+        testTag.Setup(x => x.Target).Returns(testGitObject.Object);
         testTag.Setup(x => x.FriendlyName).Returns(friendlyName);
         var tags = new List<Tag>()
         {
