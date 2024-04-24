@@ -57,8 +57,14 @@ public class GitTagsLoaderTests
         var disposeCount = 0;
         repo.Setup(x => x.Dispose()).Callback(() => disposeCount++);
         repo.Setup(x => x.Tags).Returns(tagCollection.Object);
-        var commitsLog = new TestCommitLog();
-        repo.Setup(x => x.Commits).Returns(commitsLog);
+        var commitsLog = new Mock<IQueryableCommitLog>(MockBehavior.Strict);
+        var testCommits = new List<TestCommit>()
+        {
+            new TestCommit()
+        };
+        commitsLog.Setup(x => x.GetEnumerator())
+            .Returns(() => ((IEnumerable<Commit>) testCommits).GetEnumerator());
+        repo.Setup(x => x.Commits).Returns(commitsLog.Object);
         var loader = new GitTagsLoader(p =>
         {
             if (p == path)
