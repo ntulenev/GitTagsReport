@@ -1,6 +1,5 @@
 ﻿using FluentAssertions;
 using LibGit2Sharp;
-using Logic.Tests.TestTypes;
 using Models;
 using Moq;
 
@@ -41,6 +40,7 @@ public class GitTagsLoaderTests
         var path = new GitPath(Directory.GetCurrentDirectory());
         var tagCollection = new Mock<TagCollection>(MockBehavior.Strict);
         var friendlyName = "Name123";
+        var commitMessage = "Message123";
         var gitSha = "Test";
         var testTag = new Mock<Tag>(MockBehavior.Strict);
         var testGitObject = new Mock<GitObject>(MockBehavior.Strict);
@@ -58,9 +58,12 @@ public class GitTagsLoaderTests
         repo.Setup(x => x.Dispose()).Callback(() => disposeCount++);
         repo.Setup(x => x.Tags).Returns(tagCollection.Object);
         var commitsLog = new Mock<IQueryableCommitLog>(MockBehavior.Strict);
-        var testCommits = new List<TestCommit>()
+        var testCommit = new Mock<Commit>(MockBehavior.Strict);
+        testCommit.Setup(x => x.Sha).Returns(gitSha);
+        testCommit.Setup(x => x.MessageShort).Returns(commitMessage);
+        var testCommits = new List<Commit>()
         {
-            new TestCommit()
+            testCommit.Object
         };
         commitsLog.Setup(x => x.GetEnumerator())
             .Returns(() => ((IEnumerable<Commit>) testCommits).GetEnumerator());
@@ -82,6 +85,6 @@ public class GitTagsLoaderTests
         items.Should().HaveCount(1);
         disposeCount.Should().Be(1);
         items[0].Tag.Should().Be(friendlyName);
-        items[0].Description.Should().Be("Message123");
+        items[0].Description.Should().Be(commitMessage);
     }
 }
