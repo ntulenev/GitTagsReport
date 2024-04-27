@@ -18,12 +18,17 @@ public sealed class GitReportPrinter : IGitReportPrinter
         var table = new ConsoleTable("Tag", "Description");
         foreach (var tag in items)
         {
-            var description = tag.TryGetTaskIds(ticketKey, out var ids)
-                ? string.Join(',', ids)
-                : tag.Description;
+            var description = CreateDescription(tag, ticketKey);
             table.AddRow(tag.Tag, description);
         }
 
         table.Write();
+    }
+
+    private static string CreateDescription(GitTagMetadata tag, TicketKey ticketKey)
+    {
+        return tag.TryGetTaskIds(ticketKey, out var ids)
+            ? string.Join(',', ids)
+            : tag.Description;
     }
 }
