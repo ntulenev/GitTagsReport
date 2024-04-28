@@ -1,5 +1,6 @@
-﻿using Abstractions;
-using ConsoleTables;
+﻿using ConsoleTables;
+
+using Abstractions;
 using Models;
 
 namespace Logic;

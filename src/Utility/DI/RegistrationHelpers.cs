@@ -1,10 +1,13 @@
 ﻿using System.Diagnostics;
-using Abstractions;
+
 using LibGit2Sharp;
-using Logic;
+
 using Microsoft.Extensions.DependencyInjection;
+
+using Abstractions;
 using Models;
 using Utility.Console;
+using Logic;
 
 namespace Utility.DI;
 

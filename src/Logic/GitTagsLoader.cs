@@ -1,6 +1,8 @@
 ﻿using System.Collections.Frozen;
-using Abstractions;
+
 using LibGit2Sharp;
+
+using Abstractions;
 using Models;
 
 namespace Logic;

@@ -1,5 +1,6 @@
-﻿using Abstractions;
-using CommandLine;
+﻿using CommandLine;
+
+using Abstractions;
 using Models;
 
 namespace Utility.Console;

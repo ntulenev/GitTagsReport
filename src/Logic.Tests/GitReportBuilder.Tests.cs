@@ -1,7 +1,9 @@
-using Abstractions;
 using FluentAssertions;
-using Models;
+
 using Moq;
+
+using Abstractions;
+using Models;
 
 namespace Logic.Tests;
 

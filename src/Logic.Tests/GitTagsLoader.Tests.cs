@@ -1,7 +1,10 @@
 ﻿using FluentAssertions;
+
 using LibGit2Sharp;
-using Models;
+
 using Moq;
+
+using Models;
 
 namespace Logic.Tests;
 
