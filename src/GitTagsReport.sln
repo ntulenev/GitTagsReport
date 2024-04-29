@@ -1,16 +1,21 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utility", "Utility\Utility.csproj", "{5C1F4A40-C755-426D-8CEA-31DB2527DD57}"
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34601.278
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Utility", "Utility\Utility.csproj", "{5C1F4A40-C755-426D-8CEA-31DB2527DD57}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abstractions", "Abstractions\Abstractions.csproj", "{73094D6F-990A-491F-8A83-B941FDD06484}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Abstractions", "Abstractions\Abstractions.csproj", "{73094D6F-990A-491F-8A83-B941FDD06484}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{CA4ED88D-268F-47AC-A8FF-8A6AB9697D09}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models", "Models\Models.csproj", "{CA4ED88D-268F-47AC-A8FF-8A6AB9697D09}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logic", "Logic\Logic.csproj", "{FEEDC8B5-5053-4674-A1E5-3CEE00110E93}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Logic", "Logic\Logic.csproj", "{FEEDC8B5-5053-4674-A1E5-3CEE00110E93}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models.Tests", "Models.Tests\Models.Tests.csproj", "{7F809429-4CDD-4D06-9E12-A5C8343A0234}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models.Tests", "Models.Tests\Models.Tests.csproj", "{7F809429-4CDD-4D06-9E12-A5C8343A0234}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logic.Tests", "Logic.Tests\Logic.Tests.csproj", "{1F303C7B-3034-4B73-948C-6B59642A9823}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Logic.Tests", "Logic.Tests\Logic.Tests.csproj", "{1F303C7B-3034-4B73-948C-6B59642A9823}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utility.Tests", "Utility.Tests\Utility.Tests.csproj", "{A5EEA7F8-619F-405A-A8D1-14313F25AC39}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,5 +47,15 @@ Global
 		{1F303C7B-3034-4B73-948C-6B59642A9823}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F303C7B-3034-4B73-948C-6B59642A9823}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1F303C7B-3034-4B73-948C-6B59642A9823}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5EEA7F8-619F-405A-A8D1-14313F25AC39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5EEA7F8-619F-405A-A8D1-14313F25AC39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5EEA7F8-619F-405A-A8D1-14313F25AC39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5EEA7F8-619F-405A-A8D1-14313F25AC39}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8377F957-E94E-45EF-83B3-53378C7EDEEB}
 	EndGlobalSection
 EndGlobal
