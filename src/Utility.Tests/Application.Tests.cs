@@ -4,6 +4,7 @@ using Moq;
 
 using Abstractions;
 using Utility.Console;
+using Microsoft.VisualStudio.TestPlatform.Utilities;
 
 namespace Utility.Tests;
 
@@ -33,5 +34,25 @@ public class ApplicationTests
 
         // Assert
         ex.Should().BeNull();
+    }
+
+    [Theory(DisplayName = "Run handles invalid command-line arguments")]
+    [InlineData("--wrong", "argument")]
+    [InlineData("", "")]
+    [InlineData("--DirectoryPath")]
+    [Trait("Category", "Unit")]
+    public void RunHandlesInvalidCommandLineArguments(string arg1, string arg2 = null!)
+    {
+        // Arrange
+        string[] args = arg2 == null ? new[] { arg1 } : new[] { arg1, arg2 };
+        var mockReportBuilder = new Mock<IGitReportBuilder>(MockBehavior.Strict);
+        var application = new Application(mockReportBuilder.Object);
+        using var consoleOutput = new ConsoleOutput();
+
+        // Act
+        application.Run(args);
+
+        // Assert
+        consoleOutput.GetOutput().Should().Contain("Invalid command-line arguments.");
     }
 }
