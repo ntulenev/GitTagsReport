@@ -4,7 +4,7 @@ using Moq;
 
 using Abstractions;
 using Utility.Console;
-using Microsoft.VisualStudio.TestPlatform.Utilities;
+
 using Models;
 
 namespace Utility.Tests;
