@@ -54,7 +54,7 @@ public sealed class GitTagMetadata
 
         var pattern = new Regex(@$"{ticketKey.Value}-\d+");
         var matches = pattern.Matches(Description);
-        if (matches.Any())
+        if (matches.Count != 0)
         {
             ids = matches.Select(x => x.Value).Distinct();
             return true;
