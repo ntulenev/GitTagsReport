@@ -5,6 +5,10 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
 		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+
+		<NuGetAudit>true</NuGetAudit>
+		<NuGetAuditMode>all</NuGetAuditMode>
+		<NuGetAuditLevel>low</NuGetAuditLevel>
     </PropertyGroup>
 
     <ItemGroup>
@@ -13,7 +17,7 @@
 
     <ItemGroup>
       <PackageReference Include="ConsoleTables" Version="2.6.1" />
-      <PackageReference Include="LibGit2Sharp" Version="0.29.0" />
+      <PackageReference Include="LibGit2Sharp" Version="0.30.0" />
     </ItemGroup>
 
 </Project>
