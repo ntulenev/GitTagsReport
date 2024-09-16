@@ -20,7 +20,7 @@ public class GitPathTests
     public void ConstructorNonExistentPathThrowsArgumentException()
     {
         // Arrange
-        var invalidPath = "nonexistentpath";
+        var invalidPath = "non_existing_path";
 
         // Act
         Action act = () => _ = new GitPath(invalidPath);
