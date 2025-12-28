@@ -1,4 +1,4 @@
-﻿using Models;
+using Models;
 
 namespace Abstractions;
 
@@ -15,5 +15,5 @@ public interface IGitTagsLoader
     /// An enumerable collection of <see cref="GitTagMetadata"/> objects, each representing metadata for a single Git tag
     /// found in the specified repository.
     /// </returns>
-    public IEnumerable<GitTagMetadata> LoadTags(GitPath path);
+    IEnumerable<GitTagMetadata> LoadTags(GitPath path);
 }
