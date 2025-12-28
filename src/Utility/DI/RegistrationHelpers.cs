@@ -14,7 +14,7 @@ namespace Utility.DI;
 /// <summary>
 /// Provides extension methods for registering application services and logic components.
 /// </summary>
-public static class RegistrationHelpers
+internal static class RegistrationHelpers
 {
     /// <summary>
     /// Registers the main application service.

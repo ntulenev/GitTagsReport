@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection;
 
 using Utility.Console;
 using Utility.DI;
@@ -10,6 +10,7 @@ var provider = serviceCollection.BuildServiceProvider();
 using var serviceScope = provider.CreateScope();
 var scopeProvider = serviceScope.ServiceProvider;
 
+#pragma warning disable CA1031 // Do not catch general exception types
 try
 {
     var app = scopeProvider.GetRequiredService<Application>();
@@ -19,3 +20,4 @@ catch (Exception ex)
 {
     Console.WriteLine($"Application error: {ex.Message}");
 }
+#pragma warning restore CA1031 // Do not catch general exception types

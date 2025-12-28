@@ -9,7 +9,9 @@ namespace Utility.Console;
 /// Represents the core application class that orchestrates the parsing of command-line arguments
 /// and the execution of the application logic based on those arguments.
 /// </summary>
+#pragma warning disable CA1515 // Consider making public types internal
 public sealed class Application
+#pragma warning restore CA1515 // Consider making public types internal
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="Application"/> class with the necessary dependencies.
@@ -31,6 +33,7 @@ public sealed class Application
         _ = Parser.Default.ParseArguments<Options>(args)
             .WithParsed(options =>
             {
+#pragma warning disable CA1031 // Do not catch general exception types
                 try
                 {
                     var gitPath = new GitPath(options.DirectoryPath);
@@ -42,6 +45,7 @@ public sealed class Application
                 {
                     System.Console.WriteLine($"An error occurred: {ex.Message}");
                 }
+#pragma warning restore CA1031 // Do not catch general exception types
             })
             .WithNotParsed(_ => System.Console.WriteLine("Invalid command-line arguments."));
     }

@@ -1,4 +1,4 @@
-﻿using CommandLine;
+using CommandLine;
 
 namespace Utility.Console;
 
@@ -11,7 +11,9 @@ namespace Utility.Console;
 /// Each option is decorated with attributes that specify how the option is parsed and what help
 /// text is displayed to the user.
 /// </remarks>
+#pragma warning disable CA1515 // Consider making public types internal
 public sealed class Options
+#pragma warning restore CA1515 // Consider making public types internal
 {
     /// <summary>
     /// Gets the path to the git directory.
