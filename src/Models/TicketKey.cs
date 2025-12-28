@@ -1,4 +1,4 @@
-﻿namespace Models;
+namespace Models;
 
 /// <summary>
 /// Represents a ticket key in a task tracker system (e.g., Jira).
@@ -19,12 +19,12 @@ public sealed class TicketKey
         if (string.IsNullOrWhiteSpace(ticketKey))
         {
             throw new ArgumentException("Tag cannot be null, empty, or whitespace.", nameof(ticketKey));
-            
+
         }
 
         Value = ticketKey;
     }
-    
+
     /// <summary>
     /// Gets the ticket key value.
     /// </summary>
