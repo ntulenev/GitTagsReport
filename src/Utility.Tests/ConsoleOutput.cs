@@ -1,4 +1,4 @@
-﻿namespace Utility.Tests;
+namespace Utility.Tests;
 
 /// <summary>
 /// Provides a mechanism to capture console output for unit testing purposes.
@@ -54,13 +54,7 @@ public sealed class ConsoleOutput : IDisposable
         }
     }
 
-    private void ThrowIfDisposed()
-    {
-        if (_isDisposed)
-        {
-            throw new ObjectDisposedException(nameof(ConsoleOutput));
-        }
-    }
+    private void ThrowIfDisposed() => ObjectDisposedException.ThrowIf(_isDisposed, nameof(ConsoleOutput));
 
     private readonly StringWriter _stringWriter;
     private readonly TextWriter _originalOutput;
