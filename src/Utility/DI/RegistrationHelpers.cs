@@ -1,4 +1,4 @@
-﻿using System.Diagnostics;
+using System.Diagnostics;
 
 using LibGit2Sharp;
 
@@ -20,10 +20,7 @@ public static class RegistrationHelpers
     /// Registers the main application service.
     /// </summary>
     /// <param name="services">The <see cref="IServiceCollection"/> to add the service to.</param>
-    public static void RegisterApp(this IServiceCollection services)
-    {
-        services.AddSingleton<Application>();
-    }
+    public static void RegisterApp(this IServiceCollection services) => services.AddSingleton<Application>();
 
     /// <summary>
     /// Registers the core logic components required for Git reporting as singleton services.
