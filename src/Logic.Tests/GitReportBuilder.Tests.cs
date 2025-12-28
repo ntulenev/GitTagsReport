@@ -45,7 +45,7 @@ public class GitReportBuilderTests
         var currentPath = Directory.GetCurrentDirectory();
         var path = new GitPath(currentPath);
         var taskFilter = new TicketKey("TASK-123");
-        var tags = new[] {new GitTagMetadata("v1.0", "Description")};
+        var tags = new[] { new GitTagMetadata("v1.0", "Description") };
         var loaderCount = 0;
         var loaderMock = new Mock<IGitTagsLoader>(MockBehavior.Strict);
         loaderMock.Setup(loader => loader.LoadTags(path))
