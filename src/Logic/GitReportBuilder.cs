@@ -1,4 +1,5 @@
-﻿using Abstractions;
+using Abstractions;
+
 using Models;
 
 namespace Logic;
@@ -24,15 +25,15 @@ public sealed class GitReportBuilder : IGitReportBuilder
         _loader = loader;
         _printer = printer;
     }
-    
+
     /// <inheritdoc/>
-    public void Build(GitPath path, TicketKey taskFilter)
+    public void Build(GitPath path, TicketKey ticketKey)
     {
         ArgumentNullException.ThrowIfNull(path);
-        ArgumentNullException.ThrowIfNull(taskFilter);
-        
+        ArgumentNullException.ThrowIfNull(ticketKey);
+
         var tags = _loader.LoadTags(path);
-        _printer.Print(tags,taskFilter);
+        _printer.Print(tags, ticketKey);
     }
 
     private readonly IGitTagsLoader _loader;
