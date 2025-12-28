@@ -45,7 +45,7 @@ public class ApplicationTests
     public void RunHandlesInvalidCommandLineArguments(string arg1, string arg2 = null!)
     {
         // Arrange
-        var args = arg2 == null ? new[] { arg1 } : new[] { arg1, arg2 };
+        var args = arg2 == null ? [arg1] : new[] { arg1, arg2 };
         var mockReportBuilder = new Mock<IGitReportBuilder>(MockBehavior.Strict);
         var application = new Application(mockReportBuilder.Object);
         using var consoleOutput = new ConsoleOutput();
