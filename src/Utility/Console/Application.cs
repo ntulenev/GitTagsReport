@@ -1,4 +1,4 @@
-﻿using CommandLine;
+using CommandLine;
 
 using Abstractions;
 using Models;
@@ -21,29 +21,29 @@ public sealed class Application
         ArgumentNullException.ThrowIfNull(reportBuilder);
         _reportBuilder = reportBuilder;
     }
-    
+
     /// <summary>
     /// Parses the command-line arguments and executes the application logic based on the provided options.
     /// </summary>
     /// <param name="args">The command-line arguments passed to the application.</param>
     public void Run(params string[] args)
     {
-        Parser.Default.ParseArguments<Options>(args)
+        _ = Parser.Default.ParseArguments<Options>(args)
             .WithParsed(options =>
             {
                 try
                 {
                     var gitPath = new GitPath(options.DirectoryPath);
                     var taskTag = new TicketKey(options.TicketKey);
-                    
-                    _reportBuilder.Build(gitPath,taskTag);
+
+                    _reportBuilder.Build(gitPath, taskTag);
                 }
                 catch (Exception ex)
                 {
                     System.Console.WriteLine($"An error occurred: {ex.Message}");
                 }
             })
-            .WithNotParsed(errors => { System.Console.WriteLine("Invalid command-line arguments."); });
+            .WithNotParsed(_ => System.Console.WriteLine("Invalid command-line arguments."));
     }
 
     private readonly IGitReportBuilder _reportBuilder;
