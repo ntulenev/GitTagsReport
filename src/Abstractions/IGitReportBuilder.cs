@@ -1,4 +1,4 @@
-﻿using Models;
+using Models;
 
 namespace Abstractions;
 
@@ -12,5 +12,5 @@ public interface IGitReportBuilder
     /// </summary>
     /// <param name="path">The path to the Git repository from which the report will be generated.</param>
     /// <param name="ticketKey">The ticket key that the report is focused on.</param>
-    public void Build(GitPath path, TicketKey ticketKey);
+    void Build(GitPath path, TicketKey ticketKey);
 }
