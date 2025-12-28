@@ -1,4 +1,4 @@
-﻿using FluentAssertions;
+using FluentAssertions;
 
 using LibGit2Sharp;
 
@@ -55,7 +55,7 @@ public class GitTagsLoaderTests
             testTag.Object
         };
         tagCollection.Setup(x => x.GetEnumerator())
-            .Returns(() => ((IEnumerable<Tag>) tags).GetEnumerator());
+            .Returns(() => ((IEnumerable<Tag>)tags).GetEnumerator());
         var repo = new Mock<IRepository>(MockBehavior.Strict);
         var disposeCount = 0;
         repo.Setup(x => x.Dispose()).Callback(() => disposeCount++);
@@ -69,17 +69,9 @@ public class GitTagsLoaderTests
             testCommit.Object
         };
         commitsLog.Setup(x => x.GetEnumerator())
-            .Returns(() => ((IEnumerable<Commit>) testCommits).GetEnumerator());
+            .Returns(() => ((IEnumerable<Commit>)testCommits).GetEnumerator());
         repo.Setup(x => x.Commits).Returns(commitsLog.Object);
-        var loader = new GitTagsLoader(p =>
-        {
-            if (p == path)
-            {
-                return repo.Object;
-            }
-
-            return null!;
-        });
+        var loader = new GitTagsLoader(p => p == path ? repo.Object : null!);
 
         // Act
         var items = loader.LoadTags(path).ToList();
