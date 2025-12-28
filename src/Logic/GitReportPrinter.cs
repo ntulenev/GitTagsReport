@@ -1,4 +1,4 @@
-﻿using ConsoleTables;
+using ConsoleTables;
 
 using Abstractions;
 using Models;
@@ -11,16 +11,16 @@ namespace Logic;
 public sealed class GitReportPrinter : IGitReportPrinter
 {
     /// <inheritdoc/>
-    public void Print(IEnumerable<GitTagMetadata> items, TicketKey ticketKey)
+    public void Print(IEnumerable<GitTagMetadata> items, TicketKey taskFilter)
     {
         ArgumentNullException.ThrowIfNull(items);
-        ArgumentNullException.ThrowIfNull(ticketKey);
+        ArgumentNullException.ThrowIfNull(taskFilter);
 
         var table = new ConsoleTable("Tag", "Description");
         foreach (var tag in items)
         {
-            var description = CreateDescription(tag, ticketKey);
-            table.AddRow(tag.Tag, description);
+            var description = CreateDescription(tag, taskFilter);
+            _ = table.AddRow(tag.Tag, description);
         }
 
         table.Write();
