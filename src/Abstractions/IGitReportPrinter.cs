@@ -1,4 +1,4 @@
-﻿using Models;
+using Models;
 
 namespace Abstractions;
 
@@ -13,5 +13,5 @@ public interface IGitReportPrinter
     /// <param name="items">The collection of Git tag metadata to include in the report.</param>
     /// <param name="taskFilter">The ticket key to filter the report by. Only description related to this ticket key
     /// should be included.</param>
-    public void Print(IEnumerable<GitTagMetadata> items, TicketKey taskFilter);
+    void Print(IEnumerable<GitTagMetadata> items, TicketKey taskFilter);
 }
