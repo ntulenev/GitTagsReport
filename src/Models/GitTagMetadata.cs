@@ -1,4 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
+using System.Diagnostics.CodeAnalysis;
 using System.Text.RegularExpressions;
 
 namespace Models;
@@ -65,5 +65,7 @@ public sealed class GitTagMetadata
         return false;
     }
 
+#pragma warning disable IDE1006 // Naming Styles
     private const string NoDescription = "<No description>";
+#pragma warning restore IDE1006 // Naming Styles
 }
