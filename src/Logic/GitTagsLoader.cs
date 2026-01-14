@@ -3,6 +3,7 @@
 using LibGit2Sharp;
 
 using Abstractions;
+
 using Models;
 
 namespace Logic;
