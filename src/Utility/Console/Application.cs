@@ -1,6 +1,7 @@
 using CommandLine;
 
 using Abstractions;
+
 using Models;
 
 namespace Utility.Console;
