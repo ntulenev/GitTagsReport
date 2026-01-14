@@ -5,8 +5,11 @@ using LibGit2Sharp;
 using Microsoft.Extensions.DependencyInjection;
 
 using Abstractions;
+
 using Models;
+
 using Utility.Console;
+
 using Logic;
 
 namespace Utility.DI;
